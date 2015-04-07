@@ -4,7 +4,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
 
     <f:view contentType="text/html">
         <h:head>
@@ -15,44 +16,38 @@
             </f:facet>
         </h:head>
 
-        <h:body styleClass="cuerpo">
-            <center>
-                <div id="login">
-                    <input type="hidden" value=" #{modeloBean.ruta}"/>
-                    <p:panel style="width: 50%;" header="Turu">
-                        <div id="contenido">
-                        <h:form>
-                           
-                            <p:growl id="growl" showDetail="true" sticky="true" />
-                         
-                            <h:panelGrid columns="2">
-                                <p:graphicImage value="/resources/img/candado.jpg"/> 
-                                <h:panelGrid columns="1">                            
-                                    <h:outputLabel for="Usuario"
-                                                   value="Usuario:"
-                                                   styleClass="requiredLbl"/>
-                                    <h:inputText id="Usuario"
-                                                 label="Usuario"
-                                                 value="#{usuarioLogin.usuario}"
-                                                 required="true"/>
-                                    <h:outputText value="Password:"/>  
-                                    <p:password id="clave" 
-                                                value="#{usuarioLogin.clave}"/>
-                                    <h:panelGroup/>
-                                    <p:commandButton
-                                        value="Login"
-                                        actionListener="#{usuarioLogin.confirmar}"
-                                        ajax="false"
-                                        update="growl"/>
-                                </h:panelGrid>
+        <h:body>
+       
+                <p:panel  header="Turu">      
+                    <h:form>
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        <h:panelGrid columns="1">
+                            <pm:field>
 
-                            </h:panelGrid>
+                                <p:outputLabel for="Usuario"
+                                               value="Usuario:"
+                                               />
+                                <p:inputText id="Usuario"
+                                             label="Usuario"
+                                             value="#{usuarioLogin.usuario}"
+                                             required="true"/>
+                            </pm:field>
+                            <pm:field>
+                                <p:outputLabel value="Password:" for="clave"/>  
+                                <p:password id="clave" 
+                                            value="#{usuarioLogin.clave}"/>
+                            </pm:field>
+                        </h:panelGrid>
+                        <p:commandButton
+                            value="Login"
+                            actionListener="#{usuarioLogin.confirmar}"
+                            ajax="false"
+                            update="growl"/>   
+                        <h:panelGroup/>
 
-                        </h:form></div>
-                    </p:panel>
-
-                </div>
-            </center>
+                    </h:form>
+                </p:panel>
+            
         </h:body>
 
     </f:view>
