@@ -1,23 +1,61 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='iso-8859-1' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Aplicacion prueba
-        <p:panel header="Ejemplo temas de apariencia">
-        <p:outputLabel value="Pulsa sobre mí para ver como exploto">
-        <!-- Aplicamos un efecto al texto cuando se pulse sobre el -->
-        <!-- Efectos posibles en el atributo type:-->
-        <!-- blind,clip,drop,explode,fold,puff,slide,scale,bounce, -->
-        <!-- highlight pulsate shake size transfer -->
-        <p:effect type="explode" event="click" />
-        </p:outputLabel>
-        </p:panel>
-    </h:body>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=iso-8859-1' http-equiv="Content-Type"/>
+                <link href="./../resources/css/login.css" rel="stylesheet" type="text/css" />
+                <title>Login</title>
+            </f:facet>
+        </h:head>
+
+        <h:body styleClass="cuerpo">
+            <center>
+                <div id="login">
+                    <input type="hidden" value=" #{modeloBean.ruta}"/>
+                    <p:panel style="width: 50%;" header="Turu">
+                        <div id="contenido">
+                        <h:form>
+                           
+                            <p:growl id="growl" showDetail="true" sticky="true" />
+                         
+                            <h:panelGrid columns="2">
+                                <p:graphicImage value="/resources/img/candado.jpg"/> 
+                                <h:panelGrid columns="1">                            
+                                    <h:outputLabel for="Usuario"
+                                                   value="Usuario:"
+                                                   styleClass="requiredLbl"/>
+                                    <h:inputText id="Usuario"
+                                                 label="Usuario"
+                                                 value="#{usuarioLogin.usuario}"
+                                                 required="true"/>
+                                    <h:outputText value="Password:"/>  
+                                    <p:password id="clave" 
+                                                value="#{usuarioLogin.clave}"/>
+                                    <h:panelGroup/>
+                                    <p:commandButton
+                                        value="Login"
+                                        actionListener="#{usuarioLogin.confirmar}"
+                                        ajax="false"
+                                        update="growl"/>
+                                </h:panelGrid>
+
+                            </h:panelGrid>
+
+                        </h:form></div>
+                    </p:panel>
+
+                </div>
+            </center>
+        </h:body>
+
+    </f:view>
 </html>
+
 
