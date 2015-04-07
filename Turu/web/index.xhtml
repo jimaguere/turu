@@ -1,12 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         Hello from Facelets
+  
+        <p:panel header="Ejemplo temas de apariencia">
+        <p:outputLabel value="Pulsa sobre mí para ver como exploto">
+        <!-- Aplicamos un efecto al texto cuando se pulse sobre el -->
+        <!-- Efectos posibles en el atributo type:-->
+        <!-- blind,clip,drop,explode,fold,puff,slide,scale,bounce, -->
+        <!-- highlight pulsate shake size transfer -->
+        <p:effect type="explode" event="click" />
+        </p:outputLabel>
+        </p:panel>
     </h:body>
 </html>
 
