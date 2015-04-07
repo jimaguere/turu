@@ -17,24 +17,27 @@
         </h:head>
 
         <h:body>
-       
-                <p:panel  header="Turu">      
+            <center>
+                <p:panel  header="Turu" style="width: 50%">      
                     <h:form>
                         <p:growl id="growl" showDetail="true" sticky="true" />
                         <h:panelGrid columns="1">
                             <pm:field>
-
                                 <p:outputLabel for="Usuario"
                                                value="Usuario:"
+                                               style="width: 20%"
                                                />
                                 <p:inputText id="Usuario"
                                              label="Usuario"
                                              value="#{usuarioLogin.usuario}"
+                                             style="width: 100%"
                                              required="true"/>
                             </pm:field>
                             <pm:field>
-                                <p:outputLabel value="Password:" for="clave"/>  
+                                <p:outputLabel value="Password:" for="clave"
+                                               style="width: 20%"/>  
                                 <p:password id="clave" 
+                                            style="width: 100%"
                                             value="#{usuarioLogin.clave}"/>
                             </pm:field>
                         </h:panelGrid>
@@ -47,7 +50,7 @@
 
                     </h:form>
                 </p:panel>
-            
+            </center>
         </h:body>
 
     </f:view>
