@@ -146,9 +146,11 @@ public class UsuarioLoginControlador {
         Usuario user = usuarios.get(0);
         usuarioEdit=user;
        
+        
+        
         if (user.getClave().equals(md5(this.clave))) {
             this.login = true;
-            context.getExternalContext().redirect("Menu/index.xhtml");
+            context.getExternalContext().redirect("inicio/index.xhtml");
         } else {
             context.addMessage(null, new FacesMessage("Error", "Clave Incorrecta para el usuario:" + this.usuario));
         }

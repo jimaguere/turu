@@ -31,8 +31,8 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     }
     
     public List<Usuario> findUsuario(String usuario) {
-        Query cq = getEntityManager().createNamedQuery("Usuario.findByNombreUsuario");
-        cq.setParameter("nombreUsuario", usuario);
+        Query cq = getEntityManager().createNamedQuery("Usuario.findByUsuario");
+        cq.setParameter("usuario", usuario);
         return cq.getResultList();
     }
     

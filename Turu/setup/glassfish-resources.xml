@@ -6,7 +6,7 @@
         <property name="portNumber" value="5432"/>
         <property name="databaseName" value="turu"/>
         <property name="User" value="postgres"/>
-        <property name="Password" value="1234"/>
+        <property name="Password" value="postgres1"/>
         <property name="URL" value="jdbc:postgresql://localhost:5432/turu"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
