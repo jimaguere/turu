@@ -126,7 +126,7 @@ public class UsuarioLoginControlador {
                     addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Las contraseñas no coinciden ", ""));
             return;
         }
-        usuarioEdit.setClaveUsuario(md5(this.claveConfirmada));
+        usuarioEdit.setClave(md5(this.claveConfirmada));
         this.usuarioFacade.edit(usuarioEdit);
         this.clave=this.claveConfirmada;
         this.claveConfirmada=new String();
@@ -146,9 +146,9 @@ public class UsuarioLoginControlador {
         Usuario user = usuarios.get(0);
         usuarioEdit=user;
        
-        if (user.getClaveUsuario().equals(md5(this.clave))) {
+        if (user.getClave().equals(md5(this.clave))) {
             this.login = true;
-            context.getExternalContext().redirect("Inicial/Menu.xhtml");
+            context.getExternalContext().redirect("Menu/index.xhtml");
         } else {
             context.addMessage(null, new FacesMessage("Error", "Clave Incorrecta para el usuario:" + this.usuario));
         }
