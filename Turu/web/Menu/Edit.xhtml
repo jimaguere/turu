@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMenuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMenuLabel_idMenu}" for="idMenu" />
+                    <h:inputText id="idMenu" value="#{menuController.selected.idMenu}" title="#{bundle.EditMenuTitle_idMenu}" required="true" requiredMessage="#{bundle.EditMenuRequiredMessage_idMenu}"/>
+                    <h:outputLabel value="#{bundle.EditMenuLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{menuController.selected.descripcion}" title="#{bundle.EditMenuTitle_descripcion}" required="true" requiredMessage="#{bundle.EditMenuRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{bundle.EditMenuLabel_url}" for="url" />
+                    <h:inputText id="url" value="#{menuController.selected.url}" title="#{bundle.EditMenuTitle_url}" required="true" requiredMessage="#{bundle.EditMenuRequiredMessage_url}"/>
+                    <h:outputLabel value="#{bundle.EditMenuLabel_parentIdMenu}" for="parentIdMenu" />
+                    <h:selectOneMenu id="parentIdMenu" value="#{menuController.selected.parentIdMenu}" title="#{bundle.EditMenuTitle_parentIdMenu}" required="true" requiredMessage="#{bundle.EditMenuRequiredMessage_parentIdMenu}">
+                        <f:selectItems value="#{menuController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{menuController.update}" value="#{bundle.EditMenuSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMenuViewLink}"/>
+                <br />
+                <h:commandLink action="#{menuController.prepareList}" value="#{bundle.EditMenuShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMenuIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
