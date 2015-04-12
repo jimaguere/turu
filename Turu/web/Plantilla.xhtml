@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,29 +17,38 @@
     </h:body>
     
     <h:body rendered="#{usuarioLogin.login}">
-        <table cellspacing="10px">
-            <tr>
-                <td id="top" colspan="3">
-                    <ui:insert name="top">Top</ui:insert>
-                </td>
-            </tr>
-            <tr>
-                <td id="left">
-                    <ui:insert name="left">Left</ui:insert>
-                </td>
-                <td id="content">
-                    <ui:insert name="content">Content</ui:insert>
-                </td>
-                <td id="right">
-                    <ui:insert name="right">Right</ui:insert>
-                </td>
-            </tr>
-            <tr>
-                <td id="bottom" colspan="3">
-                    <ui:insert name="bottom">Bottom</ui:insert>
-                </td>
-            </tr>
-        </table>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="auto" header="Arriba">
+              
+                <ui:insert name="top">Top</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="west"  size="auto"  header="Negocios" >
+                <ui:insert name="left">izq</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="south"  size="auto" header="TURU" >
+                <ui:insert name="bottom">abajo</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="east"  size="300" header="Cuidados" >
+                <h:form>
+                    <p:slideMenu style="width:180px">
+                        <p:submenu label="Usuarios" icon="ui-icon-carat-1-e">
+                            <p:menuitem value="Update"  icon="ui-icon-carat-1-e" />
+                        </p:submenu>
+                        
+                            <p:menuitem value="Roles" outcome="/Roles/List.xhtml" icon="ui-icon-carat-1-e"/>
+
+                        <p:submenu label="Alertas" icon="ui-icon-carat-1-e">
+                            <p:menuitem value="Delete"  ajax="false" icon="ui-icon-close"/>
+                        </p:submenu>                        
+                    </p:slideMenu>
+                </h:form>
+                 
+            </p:layoutUnit>
+            
+             <p:layoutUnit position="center"  size="auto" header="EL nuevo software ganadero">
+                <ui:insert name="content">centro</ui:insert>
+            </p:layoutUnit>
+        </p:layout>
     </h:body>
 
 </html>

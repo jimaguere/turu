@@ -3,34 +3,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/Plantilla.xhtml">
-      
+
         <ui:define name="content">
-            <h:form styleClass="jsfcrud_list_form">
+            <h:form id="form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListRolSoftwareEmpty}" rendered="#{rolSoftwareController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{rolSoftwareController.items.rowCount > 0}">
-                    <h:outputText value="#{rolSoftwareController.pagination.pageFirstItem + 1}..#{rolSoftwareController.pagination.pageLastItem + 1}/#{rolSoftwareController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{rolSoftwareController.previous}" value="#{bundle.Previous} #{rolSoftwareController.pagination.pageSize}" rendered="#{rolSoftwareController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{rolSoftwareController.next}" value="#{bundle.Next} #{rolSoftwareController.pagination.pageSize}" rendered="#{rolSoftwareController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{rolSoftwareController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+              
+                    <p:dataTable id="tabla" value="#{rolSoftwareController.items}" var="item" reflow="true" rows="5" paginator="true">
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListRolSoftwareTitle_idRol}"/>
                             </f:facet>
                             <h:outputText value="#{item.idRol}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListRolSoftwareTitle_descripcion}"/>
                             </f:facet>
                             <h:outputText value="#{item.descripcion}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
@@ -39,15 +37,35 @@
                             <h:commandLink action="#{rolSoftwareController.prepareEdit}" value="#{bundle.ListRolSoftwareEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{rolSoftwareController.destroy}" value="#{bundle.ListRolSoftwareDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
+                        </p:column>
+                    </p:dataTable>
+                
                 <br />
-                <h:commandLink action="#{rolSoftwareController.prepareCreate}" value="#{bundle.ListRolSoftwareCreateLink}"/>
+                <p:commandButton value="Modal" type="button" onclick="PF('dlg1').show();" action="#{rolSoftwareController.prepareCreate()}" />
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListRolSoftwareIndexLink}"/>
-            </h:form>
+                  </h:form>
+                <p:dialog id ='dialogo' visible="false" header="Crear Roles" widgetVar="dlg1"  appendTo="@(body)" modal="true" height="auto">
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Código" for="idRol" />
+                            <h:inputText id="idRol" value="Código"  title="Código" required="true" requiredMessage="#{bundle.CreateRolSoftwareRequiredMessage_idRol}"/>
+                            <h:outputLabel value="Rol" for="descripcion" />
+                            <h:inputText id="descripcion" value="#{rolSoftwareController.selected.descripcion}" title="Rol" required="true" requiredMessage="#{bundle.CreateRolSoftwareRequiredMessage_descripcion}"/>
+                        </h:panelGrid>
+                        <br />
+                        <p:commandButton action="#{rolSoftwareController.create}" value="Guardar" update="dialogo"/>
+                        <br />
+                        <br />
+                        <p:commandButton action="#{rolSoftwareController.prepareList}" value="Cancelar" immediate="true"/>
+                        <br />
+                        <br />
+                        <h:link outcome="/index" value="#{bundle.CreateRolSoftwareIndexLink}"/>
+                    </h:form>
+
+                </p:dialog>
+          
+            
         </ui:define>
     </ui:composition>
 

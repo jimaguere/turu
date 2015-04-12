@@ -55,8 +55,8 @@ public class Menu implements Serializable {
     private Collection<RolSoftMenu> rolSoftMenuCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentIdMenu", fetch = FetchType.EAGER)
     private Collection<Menu> menuCollection;
-    @JoinColumn(name = "parent_id_menu", referencedColumnName = "id_menu", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "parent_id_menu", referencedColumnName = "id_menu", nullable = true)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     private Menu parentIdMenu;
 
     public Menu() {
@@ -142,7 +142,7 @@ public class Menu implements Serializable {
 
     @Override
     public String toString() {
-        return "com.turu.entidades.Menu[ idMenu=" + idMenu + " ]";
+        return descripcion  ;
     }
     
 }

@@ -22,7 +22,7 @@
                     <h:outputLabel value="#{bundle.CreateMenuLabel_url}" for="url" />
                     <h:inputText id="url" value="#{menuController.selected.url}" title="#{bundle.CreateMenuTitle_url}" required="true" requiredMessage="#{bundle.CreateMenuRequiredMessage_url}"/>
                     <h:outputLabel value="#{bundle.CreateMenuLabel_parentIdMenu}" for="parentIdMenu" />
-                    <h:selectOneMenu id="parentIdMenu" value="#{menuController.selected.parentIdMenu}" title="#{bundle.CreateMenuTitle_parentIdMenu}" required="true" requiredMessage="#{bundle.CreateMenuRequiredMessage_parentIdMenu}">
+                    <h:selectOneMenu id="parentIdMenu" value="#{menuController.selected.parentIdMenu}" title="#{bundle.CreateMenuTitle_parentIdMenu}" required="false" requiredMessage="#{bundle.CreateMenuRequiredMessage_parentIdMenu}">
                         <f:selectItems value="#{menuController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
