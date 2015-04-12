@@ -7,9 +7,6 @@ package com.turu.controladores;
 
 import com.turu.daos.UsuarioFacade;
 import com.turu.entidades.Usuario;
-
-
-
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.List;
@@ -36,37 +33,18 @@ public class UsuarioLoginControlador {
     UsuarioFacade usuarioFacade;
     private String usuario;
     private String clave;
-    private String claveActual;
-    private String claveNueva;
-    private String claveConfirmada;
     private boolean login;
     private String url;
-    private Usuario usuarioEdit;
+    private Usuario usuarioLogueado;
 
-    public String getClaveActual() {
-        return claveActual;
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
     }
 
-    public void setClaveActual(String claveActual) {
-        this.claveActual = claveActual;
+    public void setUsuarioLogueado(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
     }
-
-    public String getClaveNueva() {
-        return claveNueva;
-    }
-
-    public void setClaveNueva(String claveNueva) {
-        this.claveNueva = claveNueva;
-    }
-
-    public String getClaveConfirmada() {
-        return claveConfirmada;
-    }
-
-    public void setClaveConfirmada(String claveConfirmada) {
-        this.claveConfirmada = claveConfirmada;
-    }
-    
+      
     public String getUrl() {
         return url;
     }
@@ -115,26 +93,7 @@ public class UsuarioLoginControlador {
         return "/Inicial/Menu.xhtml";
     }
     
-    public void editarSeguridad() throws Exception{
-        if(!this.clave.equals(this.claveActual)){
-              FacesContext.getCurrentInstance().
-                    addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña Actual incorrecta", ""));
-              return;
-        }
-        if(!this.claveConfirmada.equals(this.claveNueva)){
-            FacesContext.getCurrentInstance().
-                    addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Las contraseñas no coinciden ", ""));
-            return;
-        }
-        usuarioEdit.setClave(md5(this.claveConfirmada));
-        this.usuarioFacade.edit(usuarioEdit);
-        this.clave=this.claveConfirmada;
-        this.claveConfirmada=new String();
-        this.claveActual=new String();
-        this.claveNueva=new String();
-        FacesContext.getCurrentInstance().
-                    addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Contraseñas cambiada exitosamente ", ""));
-    }
+    
 
     public void confirmar() throws Exception {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -144,12 +103,10 @@ public class UsuarioLoginControlador {
             return;
         }
         Usuario user = usuarios.get(0);
-        usuarioEdit=user;
-       
-        
         
         if (user.getClave().equals(md5(this.clave))) {
             this.login = true;
+            usuarioLogueado=user;
             context.getExternalContext().redirect("inicio/index.xhtml");
         } else {
             context.addMessage(null, new FacesMessage("Error", "Clave Incorrecta para el usuario:" + this.usuario));

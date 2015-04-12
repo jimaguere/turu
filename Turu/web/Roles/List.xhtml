@@ -54,7 +54,8 @@
                             <h:inputText id="descripcion" value="#{rolSoftwareController.selected.descripcion}" title="Rol" required="true" requiredMessage="#{bundle.CreateRolSoftwareRequiredMessage_descripcion}"/>
                         </h:panelGrid>
                         <br />
-                        <p:commandButton action="#{rolSoftwareController.create}" value="Guardar" update="dialogo"/>
+                        <p:commandButton action="#{rolSoftwareController.create}" value="Guardar" ajax="false" update=":form"
+                                         oncomplete="PF('dlg1').hide();"/>
                         <br />
                         <br />
                         <p:commandButton action="#{rolSoftwareController.prepareList}" value="Cancelar" immediate="true"/>
