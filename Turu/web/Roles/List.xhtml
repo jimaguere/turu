@@ -31,17 +31,15 @@
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{rolSoftwareController.prepareView}" value="#{bundle.ListRolSoftwareViewLink}"/>
+                            </f:facet>                            
+                            <p:commandButton style="size: auto" action="#{rolSoftwareController.prepareEdit}" value="#{bundle.ListRolSoftwareEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{rolSoftwareController.prepareEdit}" value="#{bundle.ListRolSoftwareEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{rolSoftwareController.destroy}" value="#{bundle.ListRolSoftwareDestroyLink}"/>
+                            <p:commandButton style="size: auto"  action="#{rolSoftwareController.destroy}" value="#{bundle.ListRolSoftwareDestroyLink}"/>
                         </p:column>
                     </p:dataTable>
                 
                 <br />
-                <p:commandButton value="Modal" type="button" onclick="PF('dlg1').show();" action="#{rolSoftwareController.prepareCreate()}" />
+                <p:commandButton value="Nuevo" type="button" onclick="PF('dlg1').show();" action="#{rolSoftwareController.prepareCreate()}" />
                 <br />
                 <br />
                   </h:form>
