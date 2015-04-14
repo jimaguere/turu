@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPotreroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{potreroController.selected.id}" title="#{bundle.EditPotreroTitle_id}" required="true" requiredMessage="#{bundle.EditPotreroRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_area}" for="area" />
+                    <h:inputText id="area" value="#{potreroController.selected.area}" title="#{bundle.EditPotreroTitle_area}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_forraje}" for="forraje" />
+                    <h:inputText id="forraje" value="#{potreroController.selected.forraje}" title="#{bundle.EditPotreroTitle_forraje}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_carga}" for="carga" />
+                    <h:inputText id="carga" value="#{potreroController.selected.carga}" title="#{bundle.EditPotreroTitle_carga}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_diasUsoInv}" for="diasUsoInv" />
+                    <h:inputText id="diasUsoInv" value="#{potreroController.selected.diasUsoInv}" title="#{bundle.EditPotreroTitle_diasUsoInv}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_diasDescansoInv}" for="diasDescansoInv" />
+                    <h:inputText id="diasDescansoInv" value="#{potreroController.selected.diasDescansoInv}" title="#{bundle.EditPotreroTitle_diasDescansoInv}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_diasUsoVer}" for="diasUsoVer" />
+                    <h:inputText id="diasUsoVer" value="#{potreroController.selected.diasUsoVer}" title="#{bundle.EditPotreroTitle_diasUsoVer}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_diasDescansoVer}" for="diasDescansoVer" />
+                    <h:inputText id="diasDescansoVer" value="#{potreroController.selected.diasDescansoVer}" title="#{bundle.EditPotreroTitle_diasDescansoVer}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{potreroController.selected.estado}" title="#{bundle.EditPotreroTitle_estado}" required="true" requiredMessage="#{bundle.EditPotreroRequiredMessage_estado}"/>
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_score}" for="score" />
+                    <h:inputText id="score" value="#{potreroController.selected.score}" title="#{bundle.EditPotreroTitle_score}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{potreroController.selected.nombre}" title="#{bundle.EditPotreroTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_fechaAntRot}" for="fechaAntRot" />
+                    <h:inputText id="fechaAntRot" value="#{potreroController.selected.fechaAntRot}" title="#{bundle.EditPotreroTitle_fechaAntRot}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_fechaProxRot}" for="fechaProxRot" />
+                    <h:inputText id="fechaProxRot" value="#{potreroController.selected.fechaProxRot}" title="#{bundle.EditPotreroTitle_fechaProxRot}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_latitud}" for="latitud" />
+                    <h:inputText id="latitud" value="#{potreroController.selected.latitud}" title="#{bundle.EditPotreroTitle_latitud}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_longitud}" for="longitud" />
+                    <h:inputText id="longitud" value="#{potreroController.selected.longitud}" title="#{bundle.EditPotreroTitle_longitud}" />
+                    <h:outputLabel value="#{bundle.EditPotreroLabel_idFinca}" for="idFinca" />
+                    <h:selectOneMenu id="idFinca" value="#{potreroController.selected.idFinca}" title="#{bundle.EditPotreroTitle_idFinca}" required="true" requiredMessage="#{bundle.EditPotreroRequiredMessage_idFinca}">
+                        <f:selectItems value="#{fincaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{potreroController.update}" value="#{bundle.EditPotreroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPotreroViewLink}"/>
+                <br />
+                <h:commandLink action="#{potreroController.prepareList}" value="#{bundle.EditPotreroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPotreroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

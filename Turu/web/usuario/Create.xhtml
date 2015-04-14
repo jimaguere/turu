@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.CreateUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usuario}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_nombres}" for="nombres" />
+                    <h:inputText id="nombres" value="#{usuarioController.selected.nombres}" title="#{bundle.CreateUsuarioTitle_nombres}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nombres}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{usuarioController.selected.apellidos}" title="#{bundle.CreateUsuarioTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apellidos}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_correoElectronico}" for="correoElectronico" />
+                    <h:inputText id="correoElectronico" value="#{usuarioController.selected.correoElectronico}" title="#{bundle.CreateUsuarioTitle_correoElectronico}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_correoElectronico}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_institucion}" for="institucion" />
+                    <h:inputText id="institucion" value="#{usuarioController.selected.institucion}" title="#{bundle.CreateUsuarioTitle_institucion}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_institucion}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_profesion}" for="profesion" />
+                    <h:inputText id="profesion" value="#{usuarioController.selected.profesion}" title="#{bundle.CreateUsuarioTitle_profesion}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_profesion}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText id="fechaCreacion" value="#{usuarioController.selected.fechaCreacion}" title="#{bundle.CreateUsuarioTitle_fechaCreacion}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_fechaVencimiento}" for="fechaVencimiento" />
+                    <h:inputText id="fechaVencimiento" value="#{usuarioController.selected.fechaVencimiento}" title="#{bundle.CreateUsuarioTitle_fechaVencimiento}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_fechaVencimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{usuarioController.selected.estado}" title="#{bundle.CreateUsuarioTitle_estado}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_estado}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_clave}" for="clave" />
+                    <h:inputText id="clave" value="#{usuarioController.selected.clave}" title="#{bundle.CreateUsuarioTitle_clave}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_clave}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuarioController.create}" value="#{bundle.CreateUsuarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{usuarioController.prepareList}" value="#{bundle.CreateUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUsuarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

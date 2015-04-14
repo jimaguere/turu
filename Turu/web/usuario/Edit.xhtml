@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.EditUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_usuario}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_nombres}" for="nombres" />
+                    <h:inputText id="nombres" value="#{usuarioController.selected.nombres}" title="#{bundle.EditUsuarioTitle_nombres}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_nombres}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{usuarioController.selected.apellidos}" title="#{bundle.EditUsuarioTitle_apellidos}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_apellidos}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_correoElectronico}" for="correoElectronico" />
+                    <h:inputText id="correoElectronico" value="#{usuarioController.selected.correoElectronico}" title="#{bundle.EditUsuarioTitle_correoElectronico}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_correoElectronico}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_institucion}" for="institucion" />
+                    <h:inputText id="institucion" value="#{usuarioController.selected.institucion}" title="#{bundle.EditUsuarioTitle_institucion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_institucion}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_profesion}" for="profesion" />
+                    <h:inputText id="profesion" value="#{usuarioController.selected.profesion}" title="#{bundle.EditUsuarioTitle_profesion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_profesion}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText id="fechaCreacion" value="#{usuarioController.selected.fechaCreacion}" title="#{bundle.EditUsuarioTitle_fechaCreacion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_fechaVencimiento}" for="fechaVencimiento" />
+                    <h:inputText id="fechaVencimiento" value="#{usuarioController.selected.fechaVencimiento}" title="#{bundle.EditUsuarioTitle_fechaVencimiento}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_fechaVencimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{usuarioController.selected.estado}" title="#{bundle.EditUsuarioTitle_estado}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_estado}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_clave}" for="clave" />
+                    <h:inputText id="clave" value="#{usuarioController.selected.clave}" title="#{bundle.EditUsuarioTitle_clave}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_clave}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{usuarioController.update}" value="#{bundle.EditUsuarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUsuarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{usuarioController.prepareList}" value="#{bundle.EditUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUsuarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

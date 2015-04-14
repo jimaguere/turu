@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRolSoftMenuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRolSoftMenuLabel_idRolSofMenu}" for="idRolSofMenu" />
+                    <h:inputText id="idRolSofMenu" value="#{rolSoftMenuController.selected.idRolSofMenu}" title="#{bundle.CreateRolSoftMenuTitle_idRolSofMenu}" required="true" requiredMessage="#{bundle.CreateRolSoftMenuRequiredMessage_idRolSofMenu}"/>
+                    <h:outputLabel value="#{bundle.CreateRolSoftMenuLabel_idRol}" for="idRol" />
+                    <h:selectOneMenu id="idRol" value="#{rolSoftMenuController.selected.idRol}" title="#{bundle.CreateRolSoftMenuTitle_idRol}" required="true" requiredMessage="#{bundle.CreateRolSoftMenuRequiredMessage_idRol}">
+                        <f:selectItems value="#{rolSoftwareController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRolSoftMenuLabel_idMenu}" for="idMenu" />
+                    <h:selectOneMenu id="idMenu" value="#{rolSoftMenuController.selected.idMenu}" title="#{bundle.CreateRolSoftMenuTitle_idMenu}" required="true" requiredMessage="#{bundle.CreateRolSoftMenuRequiredMessage_idMenu}">
+                        <f:selectItems value="#{menuController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rolSoftMenuController.create}" value="#{bundle.CreateRolSoftMenuSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rolSoftMenuController.prepareList}" value="#{bundle.CreateRolSoftMenuShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRolSoftMenuIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

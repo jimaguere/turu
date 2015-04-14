@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author mateo
+ * @author Asus
  */
 @Entity
 @Table(name = "usuario_rol_software", catalog = "turu", schema = "public")
@@ -35,10 +35,10 @@ public class UsuarioRolSoftware implements Serializable {
     @Column(name = "id_usuario_rol_softwarre", nullable = false)
     private Integer idUsuarioRolSoftwarre;
     @JoinColumn(name = "usuario", referencedColumnName = "usuario", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private RolSoftware idRol;
 
     public UsuarioRolSoftware() {

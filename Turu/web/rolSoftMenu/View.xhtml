@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRolSoftMenuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRolSoftMenuLabel_idRolSofMenu}"/>
+                    <h:outputText value="#{rolSoftMenuController.selected.idRolSofMenu}" title="#{bundle.ViewRolSoftMenuTitle_idRolSofMenu}"/>
+                    <h:outputText value="#{bundle.ViewRolSoftMenuLabel_idRol}"/>
+                    <h:outputText value="#{rolSoftMenuController.selected.idRol}" title="#{bundle.ViewRolSoftMenuTitle_idRol}"/>
+                    <h:outputText value="#{bundle.ViewRolSoftMenuLabel_idMenu}"/>
+                    <h:outputText value="#{rolSoftMenuController.selected.idMenu}" title="#{bundle.ViewRolSoftMenuTitle_idMenu}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rolSoftMenuController.destroyAndView}" value="#{bundle.ViewRolSoftMenuDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRolSoftMenuEditLink}"/>
+                <br />
+                <h:commandLink action="#{rolSoftMenuController.prepareCreate}" value="#{bundle.ViewRolSoftMenuCreateLink}" />
+                <br />
+                <h:commandLink action="#{rolSoftMenuController.prepareList}" value="#{bundle.ViewRolSoftMenuShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRolSoftMenuIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

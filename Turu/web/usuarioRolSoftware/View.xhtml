@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsuarioRolSoftwareTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsuarioRolSoftwareLabel_idUsuarioRolSoftwarre}"/>
+                    <h:outputText value="#{usuarioRolSoftwareController.selected.idUsuarioRolSoftwarre}" title="#{bundle.ViewUsuarioRolSoftwareTitle_idUsuarioRolSoftwarre}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioRolSoftwareLabel_usuario}"/>
+                    <h:outputText value="#{usuarioRolSoftwareController.selected.usuario}" title="#{bundle.ViewUsuarioRolSoftwareTitle_usuario}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioRolSoftwareLabel_idRol}"/>
+                    <h:outputText value="#{usuarioRolSoftwareController.selected.idRol}" title="#{bundle.ViewUsuarioRolSoftwareTitle_idRol}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuarioRolSoftwareController.destroyAndView}" value="#{bundle.ViewUsuarioRolSoftwareDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsuarioRolSoftwareEditLink}"/>
+                <br />
+                <h:commandLink action="#{usuarioRolSoftwareController.prepareCreate}" value="#{bundle.ViewUsuarioRolSoftwareCreateLink}" />
+                <br />
+                <h:commandLink action="#{usuarioRolSoftwareController.prepareList}" value="#{bundle.ViewUsuarioRolSoftwareShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUsuarioRolSoftwareIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

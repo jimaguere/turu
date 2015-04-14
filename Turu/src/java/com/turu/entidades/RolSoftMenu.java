@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author mateo
+ * @author Asus
  */
 @Entity
 @Table(name = "rol_soft_menu", catalog = "turu", schema = "public")
@@ -34,10 +34,10 @@ public class RolSoftMenu implements Serializable {
     @Column(name = "id_rol_sof_menu", nullable = false)
     private Integer idRolSofMenu;
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private RolSoftware idRol;
     @JoinColumn(name = "id_menu", referencedColumnName = "id_menu", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Menu idMenu;
 
     public RolSoftMenu() {

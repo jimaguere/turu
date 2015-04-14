@@ -5,7 +5,7 @@
 package com.turu.entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,7 +25,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author mateo
+ * @author Asus
  */
 @Entity
 @Table(name = "menu", catalog = "turu", schema = "public")
@@ -51,12 +51,12 @@ public class Menu implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "url", nullable = false, length = 2147483647)
     private String url;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMenu", fetch = FetchType.EAGER)
-    private Collection<RolSoftMenu> rolSoftMenuCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentIdMenu", fetch = FetchType.EAGER)
-    private Collection<Menu> menuCollection;
-    @JoinColumn(name = "parent_id_menu", referencedColumnName = "id_menu", nullable = true)
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMenu", fetch = FetchType.LAZY)
+    private List<RolSoftMenu> rolSoftMenuList;
+    @OneToMany(mappedBy = "parentIdMenu", fetch = FetchType.LAZY)
+    private List<Menu> menuList;
+    @JoinColumn(name = "parent_id_menu", referencedColumnName = "id_menu")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Menu parentIdMenu;
 
     public Menu() {
@@ -96,20 +96,20 @@ public class Menu implements Serializable {
         this.url = url;
     }
 
-    public Collection<RolSoftMenu> getRolSoftMenuCollection() {
-        return rolSoftMenuCollection;
+    public List<RolSoftMenu> getRolSoftMenuList() {
+        return rolSoftMenuList;
     }
 
-    public void setRolSoftMenuCollection(Collection<RolSoftMenu> rolSoftMenuCollection) {
-        this.rolSoftMenuCollection = rolSoftMenuCollection;
+    public void setRolSoftMenuList(List<RolSoftMenu> rolSoftMenuList) {
+        this.rolSoftMenuList = rolSoftMenuList;
     }
 
-    public Collection<Menu> getMenuCollection() {
-        return menuCollection;
+    public List<Menu> getMenuList() {
+        return menuList;
     }
 
-    public void setMenuCollection(Collection<Menu> menuCollection) {
-        this.menuCollection = menuCollection;
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
     }
 
     public Menu getParentIdMenu() {
@@ -142,7 +142,7 @@ public class Menu implements Serializable {
 
     @Override
     public String toString() {
-        return descripcion  ;
+        return "com.turu.entidades.Menu[ idMenu=" + idMenu + " ]";
     }
     
 }

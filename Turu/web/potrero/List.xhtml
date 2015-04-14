@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPotreroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPotreroEmpty}" rendered="#{potreroController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{potreroController.items.rowCount > 0}">
+                    <h:outputText value="#{potreroController.pagination.pageFirstItem + 1}..#{potreroController.pagination.pageLastItem + 1}/#{potreroController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{potreroController.previous}" value="#{bundle.Previous} #{potreroController.pagination.pageSize}" rendered="#{potreroController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{potreroController.next}" value="#{bundle.Next} #{potreroController.pagination.pageSize}" rendered="#{potreroController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{potreroController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_area}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.area}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_forraje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.forraje}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_carga}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.carga}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_diasUsoInv}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diasUsoInv}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_diasDescansoInv}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diasDescansoInv}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_diasUsoVer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diasUsoVer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_diasDescansoVer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diasDescansoVer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_score}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.score}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_fechaAntRot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaAntRot}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_fechaProxRot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaProxRot}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_latitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.latitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_longitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.longitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPotreroTitle_idFinca}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFinca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{potreroController.prepareView}" value="#{bundle.ListPotreroViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{potreroController.prepareEdit}" value="#{bundle.ListPotreroEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{potreroController.destroy}" value="#{bundle.ListPotreroDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{potreroController.prepareCreate}" value="#{bundle.ListPotreroCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPotreroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

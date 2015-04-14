@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCuidadosGeneralesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{cuidadosGeneralesController.selected.id}" title="#{bundle.EditCuidadosGeneralesTitle_id}" required="true" requiredMessage="#{bundle.EditCuidadosGeneralesRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{cuidadosGeneralesController.selected.nombre}" title="#{bundle.EditCuidadosGeneralesTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{cuidadosGeneralesController.selected.descripcion}" title="#{bundle.EditCuidadosGeneralesTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_fechaAnt}" for="fechaAnt" />
+                    <h:inputText id="fechaAnt" value="#{cuidadosGeneralesController.selected.fechaAnt}" title="#{bundle.EditCuidadosGeneralesTitle_fechaAnt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_fechaProx}" for="fechaProx" />
+                    <h:inputText id="fechaProx" value="#{cuidadosGeneralesController.selected.fechaProx}" title="#{bundle.EditCuidadosGeneralesTitle_fechaProx}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_productos}" for="productos" />
+                    <h:inputText id="productos" value="#{cuidadosGeneralesController.selected.productos}" title="#{bundle.EditCuidadosGeneralesTitle_productos}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_observaciones}" for="observaciones" />
+                    <h:inputText id="observaciones" value="#{cuidadosGeneralesController.selected.observaciones}" title="#{bundle.EditCuidadosGeneralesTitle_observaciones}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_costoInsumo}" for="costoInsumo" />
+                    <h:inputText id="costoInsumo" value="#{cuidadosGeneralesController.selected.costoInsumo}" title="#{bundle.EditCuidadosGeneralesTitle_costoInsumo}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_costoJornal}" for="costoJornal" />
+                    <h:inputText id="costoJornal" value="#{cuidadosGeneralesController.selected.costoJornal}" title="#{bundle.EditCuidadosGeneralesTitle_costoJornal}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_periodicidad}" for="periodicidad" />
+                    <h:inputText id="periodicidad" value="#{cuidadosGeneralesController.selected.periodicidad}" title="#{bundle.EditCuidadosGeneralesTitle_periodicidad}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_duracion}" for="duracion" />
+                    <h:inputText id="duracion" value="#{cuidadosGeneralesController.selected.duracion}" title="#{bundle.EditCuidadosGeneralesTitle_duracion}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{cuidadosGeneralesController.selected.tipo}" title="#{bundle.EditCuidadosGeneralesTitle_tipo}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_idCuidadoAp}" for="idCuidadoAp" />
+                    <h:inputText id="idCuidadoAp" value="#{cuidadosGeneralesController.selected.idCuidadoAp}" title="#{bundle.EditCuidadosGeneralesTitle_idCuidadoAp}" />
+                    <h:outputLabel value="#{bundle.EditCuidadosGeneralesLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{cuidadosGeneralesController.selected.fecha}" title="#{bundle.EditCuidadosGeneralesTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{cuidadosGeneralesController.update}" value="#{bundle.EditCuidadosGeneralesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCuidadosGeneralesViewLink}"/>
+                <br />
+                <h:commandLink action="#{cuidadosGeneralesController.prepareList}" value="#{bundle.EditCuidadosGeneralesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCuidadosGeneralesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

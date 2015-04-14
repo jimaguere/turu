@@ -1,24 +1,15 @@
-<?xml version='1.0' encoding='iso-8859-1' ?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pm="http://primefaces.org/mobile">
-
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=iso-8859-1' http-equiv="Content-Type"/>
-                <link href="./../resources/css/login.css" rel="stylesheet" type="text/css" />
-                <title>Login</title>
-                <h:outputStylesheet name="css/jsfcrud.css"/>
-            </f:facet>
-        </h:head>
-
-        <h:body>
-            <center>
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <center>
                 <p:panel  header="Turu" style="width: 50%">      
                     <h:form>
                         <p:growl id="growl" showDetail="true" sticky="true" />
@@ -52,24 +43,15 @@
                     </h:form>
                 </p:panel>
             </center>
-            <br />
-            <h:link outcome="/menu/List" value="Show All Menu Items"/>
-            <br />
-            <h:link outcome="/rolSoftware/List" value="Show All RolSoftware Items"/>
-            <br />
-            <h:link outcome="/Roles/rolSoftware/List" value="Show All RolSoftware Items"/>
-            <br />
-            <h:link outcome="/menu/List" value="Show All Menu Items"/>
-            <br />
-            <h:link outcome="/menu/List" value="Show All Menu Items"/>
-        </h:body>
+    </h:body>
 
 
 
 
 
 
-    </f:view>
+
+
+
 </html>
-
 

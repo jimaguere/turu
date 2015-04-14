@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,9 +12,41 @@
         <link href="./resources/css/tableLayout.css" rel="stylesheet" type="text/css" />
         <title>Facelets Template</title>
     </h:head>
-
     <h:body rendered="#{!usuarioLogin.login}">
-        No Esta Logueado
+          <center>
+                <p:panel  header="Turu" style="width: 50%">      
+                    <h:form>
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        <h:panelGrid columns="1">
+                            <pm:field>
+                                <p:outputLabel for="Usuario"
+                                               value="Usuario:"
+                                               style="width: 20%"
+                                               />
+                                <p:inputText id="Usuario"
+                                             label="Usuario"
+                                             value="#{usuarioLogin.usuario}"
+                                             style="width: 100%"
+                                             required="true"/>
+                            </pm:field>
+                            <pm:field>
+                                <p:outputLabel value="Password:" for="clave"
+                                               style="width: 20%"/>  
+                                <p:password id="clave" 
+                                            style="width: 100%"
+                                            value="#{usuarioLogin.clave}"/>
+                            </pm:field>
+                        </h:panelGrid>
+                        <p:commandButton
+                            value="Login"
+                            actionListener="#{usuarioLogin.confirmar}"
+                            ajax="false"
+                            update="growl"/>   
+                        <h:panelGroup/>
+
+                    </h:form>
+                </p:panel>
+            </center>
     </h:body>
     
     <h:body rendered="#{usuarioLogin.login}">
@@ -35,7 +68,7 @@
                             <p:menuitem value="Update"  icon="ui-icon-carat-1-e" />
                         </p:submenu>
                         
-                            <p:menuitem value="Roles" outcome="/Roles/List.xhtml" icon="ui-icon-carat-1-e"/>
+                            <p:menuitem value="Roles" outcome="/rolSoftware/List.xhtml" icon="ui-icon-carat-1-e"/>
 
                         <p:submenu label="Alertas" icon="ui-icon-carat-1-e">
                             <p:menuitem value="Delete"  ajax="false" icon="ui-icon-close"/>

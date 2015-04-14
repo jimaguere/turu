@@ -5,8 +5,8 @@
 package com.turu.entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author mateo
+ * @author Asus
  */
 @Entity
 @Table(name = "usuario", catalog = "turu", schema = "public")
@@ -92,8 +92,8 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "clave", nullable = false, length = 2147483647)
     private String clave;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.EAGER)
-    private Collection<UsuarioRolSoftware> usuarioRolSoftwareCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<UsuarioRolSoftware> usuarioRolSoftwareList;
 
     public Usuario() {
     }
@@ -195,12 +195,12 @@ public class Usuario implements Serializable {
         this.clave = clave;
     }
 
-    public Collection<UsuarioRolSoftware> getUsuarioRolSoftwareCollection() {
-        return usuarioRolSoftwareCollection;
+    public List<UsuarioRolSoftware> getUsuarioRolSoftwareList() {
+        return usuarioRolSoftwareList;
     }
 
-    public void setUsuarioRolSoftwareCollection(Collection<UsuarioRolSoftware> usuarioRolSoftwareCollection) {
-        this.usuarioRolSoftwareCollection = usuarioRolSoftwareCollection;
+    public void setUsuarioRolSoftwareList(List<UsuarioRolSoftware> usuarioRolSoftwareList) {
+        this.usuarioRolSoftwareList = usuarioRolSoftwareList;
     }
 
     @Override

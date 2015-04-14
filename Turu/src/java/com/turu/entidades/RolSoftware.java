@@ -5,7 +5,7 @@
 package com.turu.entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author mateo
+ * @author Asus
  */
 @Entity
 @Table(name = "rol_software", catalog = "turu", schema = "public")
@@ -43,10 +43,10 @@ public class RolSoftware implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "descripcion", nullable = false, length = 2147483647)
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRol", fetch = FetchType.EAGER)
-    private Collection<RolSoftMenu> rolSoftMenuCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRol", fetch = FetchType.EAGER)
-    private Collection<UsuarioRolSoftware> usuarioRolSoftwareCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRol", fetch = FetchType.LAZY)
+    private List<RolSoftMenu> rolSoftMenuList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRol", fetch = FetchType.LAZY)
+    private List<UsuarioRolSoftware> usuarioRolSoftwareList;
 
     public RolSoftware() {
     }
@@ -76,20 +76,20 @@ public class RolSoftware implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Collection<RolSoftMenu> getRolSoftMenuCollection() {
-        return rolSoftMenuCollection;
+    public List<RolSoftMenu> getRolSoftMenuList() {
+        return rolSoftMenuList;
     }
 
-    public void setRolSoftMenuCollection(Collection<RolSoftMenu> rolSoftMenuCollection) {
-        this.rolSoftMenuCollection = rolSoftMenuCollection;
+    public void setRolSoftMenuList(List<RolSoftMenu> rolSoftMenuList) {
+        this.rolSoftMenuList = rolSoftMenuList;
     }
 
-    public Collection<UsuarioRolSoftware> getUsuarioRolSoftwareCollection() {
-        return usuarioRolSoftwareCollection;
+    public List<UsuarioRolSoftware> getUsuarioRolSoftwareList() {
+        return usuarioRolSoftwareList;
     }
 
-    public void setUsuarioRolSoftwareCollection(Collection<UsuarioRolSoftware> usuarioRolSoftwareCollection) {
-        this.usuarioRolSoftwareCollection = usuarioRolSoftwareCollection;
+    public void setUsuarioRolSoftwareList(List<UsuarioRolSoftware> usuarioRolSoftwareList) {
+        this.usuarioRolSoftwareList = usuarioRolSoftwareList;
     }
 
     @Override
